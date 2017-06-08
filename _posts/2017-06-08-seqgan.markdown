@@ -1,0 +1,39 @@
+---
+layout: post
+title:  "What's good for the goose is good for the GANder (part 1)"
+date:   2017-06-08 01:27:07 -0700
+categories: deep-learning ml project
+---
+
+Recently, I took [this course](https://cs224n.stanford.edu) where I learned a lot about NLP and Deep Learning (it was arguably my first introduction to the matter). Week 3 into the course, I thought it would be a good idea to take on implementing a GAN (i.e. neural text generation) for our final project. (**NOTE:** I was warned that even training GANs on images takes lots of tricks and that training GANs on text would be even harder.)
+
+# But, What are GANs?
+
+In a nutshell, **Generative Adversarial Nets (GANs)** are a type of generative model used in unsupervised machine learning. To build a GAN, we must build two different neural networks:
+1. **Discriminator**: a traditional classification network that *discriminates* inputs as real (a part of the training data) or fake (not a part of the training data)
+2. **Generator**: a neural network that transforms random noise input into the desired output
+
+The goal of the generator is to fool the discriminator into thinking that the desired output it produces is real while discriminator tries to correctly classify real vs. fake. In a GAN, we put these two networks together in a constant feedback loop so that both compete against each other in a zero-sum game. Because of the nature of this back and forth process, we model this as a minimax game, described as follows: [*insert equation*], which you can read more about in the original 2014 paper [Goodfellow et al](https://arxiv.org/abs/1406.2661).
+
+In the past, GANs have been pretty successful in computer vision for generating images, but not so much in natural language tasks. One of the many restrictions include that it is very difficult to back-propagate through discrete-value random variables. Imagine backpropagating gradients through discrete numerical indices {1: 'cat', 2: 'dog'}. What word would index 1.0000008 represent?
+
+# Sequence GAN
+
+Recently, however, GANs have actually been found to perform pretty well on discrete data (words). Sequence GAN ([Yu et al. 2017][seq-gan]) introduces a solution by modeling the data generator as a reinforcement learning (RL) policy to overcome the generator differentiation problem, with the RL reward signals produced by the discriminator after it judges complete sequences.
+
+Because no post is proper without a proper diagram, here is a sketch of what this network looks like (courtesy of [Yu et al. 2017][seq-gan]): 
+
+<div style="text-align: center"><img src="https://raw.githubusercontent.com/LantaoYu/SeqGAN/master/figures/seqgan.png"></div>
+
+However, problems with this model persist, as the GAN training objective is inherently unstable, producing a large variation of results that make it difficult to fool the discriminator. Maximum-likelihood Augmented Discrete GAN ([Che et al. 2017][mali-gan]) suggests a new low-variance objective for the generator. More to be said on this in my next post in this series.
+
+<!---# Maximum Likelihood Augmented Discrete GAN
+
+However, problems with this model persist, as the GAN training objective is inherently unstable, producing a large variation of results that make it difficult to fool the discriminator. Maximum-Likelihood Augmented Discrete GAN (Che at al. 2017) suggests a new low-variance objective for the generator, using a normalized reward signal from the discriminator that corresponds to log-likelihood. Our project explores both proposed implementations: we produce experimental results on both synthetic and real-world discrete datasets to explore the effectiveness of GAN over strong baselines.
+
+# Final Thoughts?
+
+Overall, despite the initially-steep learning curve, I really enjoyed working on this project. It was pretty cool that I got to work on cutting-edge research (and implement papers less than a week after they had been published no less!). 10/10 would definitely do again.-->
+
+[seq-gan]: https://arxiv.org/abs/1609.05473
+[mali-gan]: https://arxiv.org/abs/1702.07983
