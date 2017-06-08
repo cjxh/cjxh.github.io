@@ -5,6 +5,8 @@ date:   2017-06-08 01:27:07 -0700
 categories: deep-learning ml project
 ---
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
 Recently, I took [this course](https://cs224n.stanford.edu) where I learned a lot about NLP and Deep Learning (it was arguably my first introduction to the matter). Week 3 into the course, I thought it would be a good idea to take on implementing a GAN (i.e. neural text generation) for our final project. (**NOTE:** I was warned that even training GANs on images takes lots of tricks and that training GANs on text would be even harder.)
 
 # But, What are GANs?
@@ -13,7 +15,13 @@ In a nutshell, **Generative Adversarial Nets (GANs)** are a type of generative m
 1. **Discriminator**: a traditional classification network that *discriminates* inputs as real (a part of the training data) or fake (not a part of the training data)
 2. **Generator**: a neural network that transforms random noise input into the desired output
 
-The goal of the generator is to fool the discriminator into thinking that the desired output it produces is real while discriminator tries to correctly classify real vs. fake. In a GAN, we put these two networks together in a constant feedback loop so that both compete against each other in a zero-sum game. Because of the nature of this back and forth process, we model this as a minimax game, described as follows: [*insert equation*], which you can read more about in the original 2014 paper [Goodfellow et al](https://arxiv.org/abs/1406.2661).
+The goal of the generator is to fool the discriminator into thinking that the desired output it produces is real while discriminator tries to correctly classify real vs. fake. In a GAN, we put these two networks together in a constant feedback loop so that both compete against each other in a zero-sum game. Because of the nature of this back and forth process, we model this as a minimax game, described as follows:  
+
+$$
+\underset{G}{\text{minimize}}\; \underset{D}{\text{maximize}}\; \mathbb{E}_{x \sim p_\text{data}}\left[\log D(x)\right] + \mathbb{E}_{z \sim p(z)}\left[\log \left(1-D(G(z))\right)\right]
+$$
+
+which you can read more about in the original 2014 paper [Goodfellow et al](https://arxiv.org/abs/1406.2661).
 
 In the past, GANs have been pretty successful in computer vision for generating images, but not so much in natural language tasks. One of the many restrictions include that it is very difficult to back-propagate through discrete-value random variables. Imagine backpropagating gradients through discrete numerical indices {1: 'cat', 2: 'dog'}. What word would index 1.0000008 represent?
 
