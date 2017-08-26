@@ -6,7 +6,7 @@ permalink: /about/
 
 swe interested in computer systems and its applications to ml.
 
-student @ [stanford](https://stanford.edu) BS'17 & MS'18 in CS.
+student @ [stanford](https://stanford.edu) BS'17 & MS'(tbd) in CS.
 
 intern --> recent FT @ [doordash](https://doordash.com) (summer'17). previously @ [facebook](https://facebook.com) (summer'16), [symantec](https://symantec.com) (summer'15).
 
