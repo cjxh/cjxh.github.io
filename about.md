@@ -1,18 +1,13 @@
 ---
 layout: page
-title: About
+title: about
 permalink: /about/
 ---
 
-swe interested in computer systems and its applications to ml.
+Software engineer with an interest in computer systems and ML. [Stanford CS](https://cs.stanford.edu) BS'17/MS'[TBD].
 
-student @ [stanford](https://stanford.edu) BS'17 & MS'(tbd) in CS.
+Recent intern --> FT @ [Doordash](https://doordash.com). Previously @ [Facebook](https://facebook.com), [Symantec](https://symantec.com). Feminist @ [WiCS](https://web.stanford.edu/group/wics/).
 
-intern --> recent FT @ [doordash](https://doordash.com) (summer'17). previously @ [facebook](https://facebook.com) (summer'16), [symantec](https://symantec.com) (summer'15).
+I like taking photos and [posting them](https://www.instagram.com/ctina.hung/). I also like [puppies](https://pics.me.me/this-weird-ass-bird-just-barked-at-me-19044986.png).
 
-feminist @ [stanford wics](https://web.stanford.edu/group/wics/)
 
-projects @
-{% include icon-github.html username="cjxh" %} (more to come..)
-
-i also like taking photos and posting them @ [here](https://www.instagram.com/ctina.hung/).
