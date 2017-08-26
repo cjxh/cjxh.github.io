@@ -5,7 +5,7 @@ date:   2017-06-08 00:19:55 -0700
 categories: update
 ---
 
-Trying out this blog posting thing and figured that as a CS person's blog, this was only appropriate:
+Testing how code looks on this thing:
 
 {% highlight ruby %}
 def print_hello(name)
