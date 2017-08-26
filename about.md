@@ -4,7 +4,7 @@ title: about
 permalink: /about/
 ---
 
-Software engineer with an interest in computer systems and ML. [Stanford](https://cs.stanford.edu) BS'17/MS'[soon].
+Software engineer with an interest in computer systems and ML. [Stanford](https://cs.stanford.edu) **BS**'17 / **MS**'[soon].
 
 Recent intern --> FT @ [Doordash](https://doordash.com). Previously @ [Facebook](https://facebook.com), [Symantec](https://symantec.com). Feminist @ [WiCS](https://web.stanford.edu/group/wics/).
 
