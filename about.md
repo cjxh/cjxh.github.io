@@ -10,3 +10,7 @@ Recent intern --> FT @ [Doordash](https://doordash.com). Previously @ [Facebook]
 
 I like taking photos and [posting them](https://www.instagram.com/ctina.hung/). I sometimes [tweet](https://twitter.com/cjtinah). Puppies are [cute](https://pbs.twimg.com/media/CswfUa-VUAAf0Uq.jpg).
 
+## currently reading
+  * Sapiens
+  * The Signal and the Noise
+  * Lean In
