@@ -4,14 +4,16 @@ title: About
 permalink: /about/
 ---
 
-Software engineer interested in the applications of ML and DL.
+software eng interested in the applications of ML and DL.
 
-Student @ [Stanford](https://stanford.edu) BS'17 & MS'18 in CS.
+student @ [Stanford](https://stanford.edu) BS'17 & MS'18 in CS.
 
-Intern @ [Doordash](https://doordash.com) (Summer'17). Previously @ [Facebook](https://facebook.com) (Summer'16), [Symantec](https://symantec.com) (Summer'15).
+intern --> recent FT @ [Doordash](https://doordash.com) (summer'17). previously @ [Facebook](https://facebook.com) (summer'16), [Symantec](https://symantec.com) (summer'15).
 
-Feminist @ [Stanford WiCS](https://web.stanford.edu/group/wics/)
+feminist @ [Stanford WiCS](https://web.stanford.edu/group/wics/)
 
-Projects @
+projects @
 {% include icon-github.html username="cjxh" %}
-(Planning to do more, I promise :P)
+(planning to do more.. I promise :P)
+
+I also like taking photos and posting them @ [IG](https://www.instagram.com/ctina.hung/)
