@@ -10,10 +10,7 @@ Software engineer with an interest in computer systems and machine learning.
 
 Currently full-time @ [Doordash](https://doordash.com). Advocate for women@.
 
-## 3 things about me 
-  * I like taking [photos](https://www.instagram.com/ctina.hung/). 
-  * I sometimes [tweet](https://twitter.com/cjtinah). 
-  * I think puppies are [cute](https://pbs.twimg.com/media/CswfUa-VUAAf0Uq.jpg).
+I like taking [photos](https://www.instagram.com/ctina.hung/). I sometimes [tweet](https://twitter.com/cjtinah). Puppies are [cute](https://pbs.twimg.com/media/CswfUa-VUAAf0Uq.jpg).
 
 ## things I currently like
   * [Intellij](https://www.jetbrains.com/idea/) - Great for developing in Kotlin/Java because autocomplete is amazing.
