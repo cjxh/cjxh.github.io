@@ -1,2 +1,1 @@
-# cjxh.github.io
-Personal Blog
+[my personal blog](cjxh.github.io)
