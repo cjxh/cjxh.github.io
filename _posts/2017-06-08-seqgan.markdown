@@ -1,38 +1,44 @@
 ---
 layout: post
-title:  "What's good for the goose is good for the GANder"
+title:  "What's good for the goose is good for the GANder: a look into Generative Adversarial Networks for neural language generation"
 date:   2017-06-08 01:27:07 -0700
 categories: deep-learning ml project
 ---
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-Recently, I took [this course](https://cs224n.stanford.edu) on Natural Language Processing (NLP) and Deep Learning. I learned a lot about different types of neural networks and how they are applied to language models in things we use to communicate in every day (i.e. web search, ads, emails, language translation). 
+Recently, I took [this course](https://cs224n.stanford.edu) on Natural Language Processing (NLP) and Deep Learning. I learned a lot about different types of neural networks and how they are applied to language models in things we use to communicate every day (i.e. web search, ads, emails, language translation). 
 
-For my final project, I thought it would be interesting to tackle neural text generation using a special type of neural network called a Generative Adversarial Network (GAN). GANs have mostly been used in computer vision, for generating photorealistic images or reconstructing images based on a provided sample set of images. For instance, examples like [this](https://twitter.com/goodfellow_ian/status/851124988903997440?lang=en) video of a horse-turned-zebra were created using a GAN. There are also other cool applications of GANs, such as neural style transfer: [this](https://github.com/jcjohnson/neural-style) is a fairly well-known mapping of the artistic style of [The Starry Night](https://en.wikipedia.org/wiki/The_Starry_Night) painting onto photographs. 
+For my final project, I thought it would be interesting to tackle neural text generation using a special type of neural network called a Generative Adversarial Network (GAN). GANs have mostly been used in computer vision, for generating photorealistic images or reconstructing images based on a provided sample set of images. For instance, examples like [this video](https://twitter.com/goodfellow_ian/status/851124988903997440?lang=en) of a horse-turned-zebra were created using a GAN. There are also other cool applications of GANs, such as neural style transfer: [this](https://github.com/jcjohnson/neural-style) is a fairly well-known mapping of the artistic style of [The Starry Night](https://en.wikipedia.org/wiki/The_Starry_Night) painting onto photographs. 
 
-As you likely have already concluded from these examples, we must first collecting a large amount of data in the interested domain, then training a model (the GAN) to generate similar data. My project partner and I figured that since the data available for the English language is essentially ubiquitous (i.e. [the Penn Treebank](https://web.archive.org/web/19970614160127/http://www.cis.upenn.edu:80/~treebank/) is an annotated text for linguistic structure that already exists), training a model to simulate the linguistic structure of English sentences should be fairly straight-forward.
+As you likely have already concluded from these examples, to train a GAN, we must first collect a large amount of data in the interested domain, then train a model to generate similar data. My project partner and I figured that since the data available for the English language is pretty robust (i.e. [the Penn Treebank](https://web.archive.org/web/19970614160127/http://www.cis.upenn.edu:80/~treebank/) is an annotated text for linguistic structure that already exists), training a model to simulate the linguistic structure of English sentences should be fairly straight-forward.
 
-# But, What is a GAN?
+# What is a GAN?
 
-In a nutshell, **Generative Adversarial Nets (GANs)** are a type of generative model used in unsupervised machine learning. To build a GAN, we must build two different neural networks:
-1. **Discriminator**: a traditional classification network that *discriminates* inputs as real (a part of the training data) or fake (not a part of the training data)
-2. **Generator**: a neural network that transforms random noise input into the desired output
+Technically speaking, a GAN is a generative model used in unsupervised machine learning (that is, machine learning used to describe hidden structure in data). 
 
-The goal of the generator is to fool the discriminator into thinking that the desired output it produces is real while discriminator tries to correctly classify real vs. fake. In a GAN, we put these two networks together in a constant feedback loop so that both compete against each other in a zero-sum game. Because of the nature of this back and forth process, we model this as a minimax game, described as follows:  
+A GAN is actually made up of 2 different neural networks, each of which has its own distinct inputs and outputs:
+1. **Discriminator**: A traditional classification network that *discriminates* its inputs as real (a part of the training data) or fake (generated samples that are not a part of the training data).
+2. **Generator**: A neural network that *generates* samples that are similar to the training data. More technically speaking, it *transforms* random noise into the desired output that is similar in structure to the input data of the *model*. However, the generator itself takes random noise as input. 
+
+Combining these 2 models, we say that the goal of the generator is to fool the discriminator into thinking that the desired output it produces is "real," while the discriminator tries to correctly classify its inputs as real or fake (generated). In other words, these two networks are put together in a constant feedback loop so that both compete against each other in a zero-sum game, which can be modeled as a minimax game described as follows:  
 
 $$
 \underset{G}{\text{minimize}}\; \underset{D}{\text{maximize}}\; \mathbb{E}_{x \sim p_\text{data}}\left[\log D(x)\right] + \mathbb{E}_{z \sim p(z)}\left[\log \left(1-D(G(z))\right)\right]
 $$
 
-which you can read more about in the original 2014 paper [Goodfellow et al](https://arxiv.org/abs/1406.2661).
+This concept was first introduced in 2014 in the paper [Goodfellow et al](https://arxiv.org/abs/1406.2661).
 
-In the past, GANs have been pretty successful in computer vision for generating images, but not so much in natural language tasks. One of the many restrictions include that it is very difficult to back-propagate through discrete-value random variables. Imagine backpropagating gradients through discrete numerical indices {1: 'cat', 2: 'dog'}. What word would index 1.0000008 represent?
+
+*WIP*
+
+
+However, even though GANs have been pretty successful in computer vision for generating images, they have often failed in natural language tasks. One of the many restrictions include that it is very difficult to back-propagate through discrete-value random variables. Imagine backpropagating gradients through discrete numerical indices {1: 'cat', 2: 'dog'}. What word would index 1.0000008 represent?
 
 
 We took inspiration for our project from the following two papers:
-[Sequence GAN](https://arxiv.org/abs/1609.05473)
-[Maximum Augmented Likelihood GAN](https://arxiv.org/abs/1702.07983)
+  * [Sequence GAN](https://arxiv.org/abs/1609.05473)
+  * [Maximum Augmented Likelihood GAN](https://arxiv.org/abs/1702.07983)
 
 # Sequence GAN
 
