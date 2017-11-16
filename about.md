@@ -4,6 +4,8 @@ title: about
 permalink: /about/
 ---
 
+![alt text](https://scontent-sea1-1.xx.fbcdn.net/v/t1.0-9/13932835_1145626575494437_4365859197848401159_n.jpg?oh=3e9c7753048a877b58f20cd626a2dd27&oe=5A97BA92)
+
 Software engineer with an interest in computer systems and machine learning. 
 
 Currently full-time @ [Doordash](https://doordash.com). Advocate for women@. [Stanford](https://cs.stanford.edu) **BS**'17 / **MS**'[TBD]. 
