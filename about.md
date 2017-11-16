@@ -6,9 +6,7 @@ permalink: /about/
 
 Software engineer with an interest in computer systems and machine learning. 
 
-[Stanford](https://cs.stanford.edu) **BS**'17 / **MS**'[TBD].
-
-Currently full-time @ [Doordash](https://doordash.com). Advocate for women@.
+Currently full-time @ [Doordash](https://doordash.com). Advocate for women@. [Stanford](https://cs.stanford.edu) **BS**'17 / **MS**'[TBD]. 
 
 I like taking [photos](https://www.instagram.com/ctina.hung/). I sometimes [tweet](https://twitter.com/cjtinah). Puppies are [cute](https://pbs.twimg.com/media/CswfUa-VUAAf0Uq.jpg).
 
