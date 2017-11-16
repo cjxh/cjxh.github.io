@@ -4,7 +4,9 @@ title: about
 permalink: /about/
 ---
 
-Software engineer with an interest in computer systems and machine learning. [Stanford](https://cs.stanford.edu) **BS**'17 / **MS**'[TBD].
+Software engineer with an interest in computer systems and machine learning. 
+
+[Stanford](https://cs.stanford.edu) **BS**'17 / **MS**'[TBD].
 
 Currently full-time @ [Doordash](https://doordash.com). Advocate for women@.
 
