@@ -1,1 +1,1 @@
-[my personal blog](cjxh.github.io)
+[my personal blog](https://cjxh.github.io)
