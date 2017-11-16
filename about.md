@@ -12,7 +12,7 @@ I like taking [photos](https://www.instagram.com/ctina.hung/). I sometimes [twee
 
 ## things I currently like
   * [Intellij](https://www.jetbrains.com/idea/) - Great for developing in Kotlin/Java because autocomplete is amazing.
-  * [Kotlin](https://kotlinlang.org/) (for backend, not Android) - Because it is statically typed and supports higher-order functions/lamdas.
+  * [Kotlin](https://kotlinlang.org/) (for server backend, not Android) - Because it is statically typed and supports higher-order functions/lamdas.
   * Functional Programming - Less room for error, and also elegant. Trying to learn more about this.
 
 ## reading list
