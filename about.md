@@ -13,7 +13,7 @@ Currently full-time @ [Doordash](https://doordash.com). Advocate for women@.
 I like taking [photos](https://www.instagram.com/ctina.hung/). I sometimes [tweet](https://twitter.com/cjtinah). Puppies are [cute](https://pbs.twimg.com/media/CswfUa-VUAAf0Uq.jpg).
 
 ## things I currently like
-  * [Intellij](https://www.jetbrains.com/idea/) - Great for developing in Kotlin/Java because autocomplete is great.
+  * [Intellij](https://www.jetbrains.com/idea/) - Great for developing in Kotlin/Java because autocomplete is amazing.
   * [Kotlin](https://kotlinlang.org/) - Because it is statically typed and supports higher-order functions/lamdas.
   * Functional Programming - Less room for error, and also elegant. Trying to learn more about this.
 
