@@ -7,16 +7,15 @@ categories: deep-learning ml project
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-
 Recently, I took [this course](https://cs224n.stanford.edu) on Natural Language Processing (NLP) and Deep Learning. I learned a lot about different types of neural networks and how they are applied to language models in things we use to communicate every day (i.e. web search, ads, emails, language translation). 
 
-For my final project, I thought it would be interesting to tackle neural text generation using a special type of neural network called a Generative Adversarial Network (GAN). GANs have mostly been used in computer vision, for generating photorealistic images or reconstructing images based on a provided sample set of images. For instance, examples like [this video](https://twitter.com/goodfellow_ian/status/851124988903997440?lang=en) of a horse-turned-zebra were created using a GAN. There are also other cool applications of GANs, such as neural style transfer: [this](https://github.com/jcjohnson/neural-style) is a fairly well-known mapping of the artistic style of [The Starry Night](https://en.wikipedia.org/wiki/The_Starry_Night) painting onto photographs. 
-
-As you likely have already concluded from these examples, to train a GAN, we must first collect a large amount of data in the interested domain, then train a model to generate similar data. My project partner and I figured that since the data available for the English language is pretty robust (i.e. [the Penn Treebank](https://web.archive.org/web/19970614160127/http://www.cis.upenn.edu:80/~treebank/) is an annotated text for linguistic structure that already exists), training a model to simulate the linguistic structure of English sentences should be fairly straight-forward.
+For my final project, my project partner and I thought it would be interesting to tackle neural text generation. Generating authentic human language is a significant and worthwhile challenge in Natural Language Processing (NLP)--it has wide-ranging applications from machine translation to summarization to dialogue generation. The standard methodology has been statistical token generation using recurrent neural netowrks (RNNs) with long short-term memory (LSTM) cells via maximum likelihood estimation (MLE)--i.e. maximize the conditional probability of the next token based on the training data. However, there are several shortcomings to this approach. One is exposure bias: during generation, the generator may see partial sequences it has not seen in training. Another is that it tends ot produce boring and statistically-safe predictions, unlike traditional human text. This has actually insprired several projects aimed at generating text indistinguishable from human text, such as the Turing test. Thus, this naturally leads us to the idea of a 2-part model: a generator and a discriminator that simply judges whether a given sentence was human-generated.
 
 # What is a GAN?
 
-Technically speaking, a GAN is a generative model used in unsupervised machine learning (that is, machine learning used to describe hidden structure in data). 
+GANs have mostly been used in computer vision, for generating photorealistic images or reconstructing images based on a provided sample set of images. For instance, examples like [this video](https://twitter.com/goodfellow_ian/status/851124988903997440?lang=en) of a horse-turned-zebra were created using a GAN. There are also other cool applications of GANs, such as neural style transfer: [this](https://github.com/jcjohnson/neural-style) is a fairly well-known mapping of the artistic style of [The Starry Night](https://en.wikipedia.org/wiki/The_Starry_Night) painting onto photographs. 
+
+More technically, a GAN is a generative model used in unsupervised machine learning (that is, machine learning used to describe hidden structure in data). 
 
 A GAN is actually made up of 2 different neural networks, each of which has its own distinct inputs and outputs:
 1. **Discriminator**: A traditional classification network that *discriminates* its inputs as real (a part of the training data) or fake (generated samples that are not a part of the training data).
@@ -31,19 +30,16 @@ $$
 This concept was first introduced in 2014 in the paper [Goodfellow et al](https://arxiv.org/abs/1406.2661).
 
 
-*WIP*
+However, even though GANs have been pretty successful in computer vision for generating images, they have often failed in natural language tasks. In image generation, gradients are back-propagated from the result of the discriminator through the start of the generator to update both models at the same time. This is possible because images are composed of continuous pixel values. In the case of text data, generated words are discrete words and it is impossible to slightly adjust the value of word with a grdient. (Imagine backpropagating gradients through discrete numerical indices {1: 'cat', 2: 'dog'}. What word would index 1.0000008 represent?)
 
 
-However, even though GANs have been pretty successful in computer vision for generating images, they have often failed in natural language tasks. One of the many restrictions include that it is very difficult to back-propagate through discrete-value random variables. Imagine backpropagating gradients through discrete numerical indices {1: 'cat', 2: 'dog'}. What word would index 1.0000008 represent?
-
-
-We took inspiration for our project from the following two papers:
-  * [Sequence GAN](https://arxiv.org/abs/1609.05473)
+Instead, a reinforcement strategy must be implemented, using rewards from the discriminator to update the generator's parameters. Recent publications have applied GAN to discrete data with promising results:
+  * [Sequence GAN (Yu et al. 2017)](https://arxiv.org/abs/1609.05473) proposes a model that 
   * [Maximum Augmented Likelihood GAN](https://arxiv.org/abs/1702.07983)
 
 # Sequence GAN
 
-Recently, however, GANs have actually been found to perform pretty well on discrete data (words). Sequence GAN ([Yu et al. 2017][seq-gan]) introduces a solution by modeling the data generator as a reinforcement learning (RL) policy to overcome the generator differentiation problem, with the RL reward signals produced by the discriminator after it judges complete sequences.
+Sequence GAN ([Yu et al. 2017][seq-gan]) introduces a solution by modeling the data generator as a reinforcement learning (RL) policy to overcome the generator differentiation problem, with the RL reward signals produced by the discriminator after it judges complete sequences.
 
 Because no post is proper without a proper diagram, here is a sketch of what this network looks like (courtesy of [Yu et al. 2017][seq-gan]): 
 
