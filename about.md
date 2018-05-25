@@ -6,7 +6,7 @@ permalink: /about/
 
 Software engineer with an interest in computer systems and machine learning. 
 
-## things about me
+## some facts
   * currently SWE @ [Doordash](https://doordash.com), building microservices
   * advocate for women@
   * from [Stanford](https://cs.stanford.edu) **BS**'17 / **MS**'[getting there..]
