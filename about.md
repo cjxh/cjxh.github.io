@@ -4,10 +4,10 @@ title: about
 permalink: /about/
 ---
 
-**Software engineer** with an interest in **computer systems** and **machine learning**. 
+I'm a **software engineer** with an interest in **computer systems** and **machine learning**. 
   * **student** @ [**Stanford Computer Science**](https://cs.stanford.edu) -- **BS**'17 *Systems* / **MS**'19 *Artificial Intelligence*
   * **SWE** @ [**Doordash**](https://doordash.com), talk to me about **microservice architecture**
-  * always an **advocate** for **women@**
+  * always an **advocate** for **women@**, *[**here**](https://medium.com/@3fingeredfox/margaret-hamilton-lead-software-engineer-project-apollo-158754170da8) is an inspiring read for you imposter syndrome sufferers*
 
 ## some things i'm interested in
   * **NLP research** -- reading up on papers every now and then, *stay tuned for a link to my notes!*
