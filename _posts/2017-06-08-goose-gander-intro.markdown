@@ -47,7 +47,7 @@ Additionally, in practice, it is impossible to optimize $$D$$ completely before 
 
 Even though GANs have been pretty successful in computer vision for generating images, they have often failed in natural language tasks. Why is this?
 
-In image generation, gradients are back-propagated from the result of the discriminator through the start of the generator to update both models at the same time. This is possible because images are composed of continuous pixel values. However, in the case of text data, generated words are discrete words and it is impossible to slightly adjust the value of word with a grdient. (Imagine backpropagating gradients through discrete numerical indices {1: 'cat', 2: 'dog'}. What word would index 1.0000008 represent?)
+In image generation, gradients are back-propagated from the result of the discriminator through the start of the generator to update both models at the same time. This is possible because images are composed of continuous pixel values. However, in the case of text data, generated words are represented as discrete numerical indices, and it is impossible to slightly adjust the value of word with a gradient. (Imagine backpropagating gradients through discrete numerical indices {1: 'cat', 2: 'dog'}. What word would index 1.0000008 represent?)
 
 Instead, we must implement a reinforcement strategy, using "rewards" from the discriminator to update the generator's parameters so that we maintain our discrete distribution. Recent publications have applied GANs to discrete data with promising results:
   * [Sequence GAN (Yu et al. 2017)](https://arxiv.org/abs/1609.05473)
