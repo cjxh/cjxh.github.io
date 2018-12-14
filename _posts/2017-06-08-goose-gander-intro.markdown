@@ -15,25 +15,33 @@ The standard methodology for text generation has been statistical token generati
 
 # What is a GAN?
 
-GANs have mostly been used in computer vision, for generating photorealistic images or reconstructing images based on a provided sample set of images. For instance, examples like [this video](https://twitter.com/goodfellow_ian/status/851124988903997440?lang=en) of a horse-turned-zebra were created using a GAN. There are also other cool applications of GANs, such as neural style transfer: [this](https://github.com/jcjohnson/neural-style) is a fairly well-known mapping of the artistic style of [The Starry Night](https://en.wikipedia.org/wiki/The_Starry_Night) painting onto photographs. 
+GANs have mostly been used in computer vision, for generating photorealistic images or reconstructing images based on a provided sample set of images. For instance, [this video](https://twitter.com/goodfellow_ian/status/851124988903997440?lang=en) of a horse-turned-zebra was created using a GAN. There are also other cool applications of GANs, such as neural style transfer: [this](https://github.com/jcjohnson/neural-style) is a fairly well-known mapping of the artistic style of [The Starry Night](https://en.wikipedia.org/wiki/The_Starry_Night) painting onto photographs. 
 
-In a more "technical" sense, a GAN is a generative model for unsupervised machine learning, which is used to describe latent structure in unlabeled data. 
+More formally, a GAN is a generative model for unsupervised machine learning, which is used to extract or describe latent structure in unlabeled data. 
 
 A GAN is actually made up of 2 different neural networks, each of which has its own distinct inputs and outputs:
 1. **Discriminator**: A traditional classification network that *discriminates* its inputs as real (a part of the training data) or fake (generated samples that are not a part of the training data).
 2. **Generator**: A neural network that *generates* samples that are similar to the training data. In other words, it takes some "random noise" as input, then transforms this "noise" into an output that is similar in structure to the data of the desired model we are trying to "learn."
 
-Together, we say that the goal of the generator is to "fool" the discriminator into thinking that the desired output it produces is "real," while the discriminator tries to correctly classify its inputs as real or fake (generated). We connect these two networks into a constant feedback loop, competing against each other in a zero-sum game. We model this as a minimax game:  
+Together, we say that the goal of the generator is to "fool" the discriminator into thinking that the desired output it produces is "real," while the discriminator tries to correctly classify this generated data as real (not generated) or fake (generated). We connect these two networks into a constant feedback loop, competing against each other in a zero-sum game. 
+
+![Diagram of a GAN][GAN-diagram]
+<p style="text-align: center;"><strong>Figure 1.</strong> <i>Generator-Discriminator</i> building blocks of <i>Generative Adversarial Network</i></p>
+
+Given multilayer perceptrons $$G$$ (generator) and $$D$$ (discriminator), as well as input training data $$x \sim p_\text{data}$$ and noise variables $$z \sim p(z)$$, we model this as a minimax game:  
 
 $$
 \underset{G}{\text{minimize}}\; \underset{D}{\text{maximize}}\; \mathbb{E}_{x \sim p_\text{data}}\left[\log D(x)\right] + \mathbb{E}_{z \sim p(z)}\left[\log \left(1-D(G(z))\right)\right]
 $$
 
+Simultaneously, we train $$D$$ to maximize the probability of assigning the correct labels ("real" or "fake") to training data and generated samples, and $$G$$ to minimize the probability that $$D$$ assigns the correct labels. 
 *(This concept was first introduced in the paper [Goodfellow et al. 2014](https://arxiv.org/abs/1406.2661))*
 
 # How does this work in practice?
 
-<!-- something about how generator is updated with gradients of discriminator, etc. etc.-->
+Realistically, however, we recall that log loss increases as our predicted probability diverges from the true label, and decreases when the opposite occurs. This implies that at the start of the game, when the generator is poor, the discriminator will easily differentiate between "fake" and "real" inputs; as a result, the gradient for our generator will be small and $$\log (1-D(G(z))$$ saturates. This means our $$G$$ will never update. It makes sense, therefore, to separate the cost function for $$G$$ to maximize $$\log (D(G(z))$$ rather than minimizing $$\log (1-D(G(z))$$.
+
+Additionally, in practice, it is impossible to optimize $$D$$ completely before training $$G$$, as this would result in overfitting the discriminator to our input data. Instead, we maintain a near-optimal solution for $$D$$ at all times by optimizing $$G$$ much slower than we do $$D$$. We implement this iteratively, applying simultaneous gradient descent to both $$D$$ and $$G$$ by alternating $$k$$ steps of optimizing $$D$$ with a single step of optimizing $$G$$. 
 
 # Some Limitations of GAN Applications to NLP
 
@@ -41,7 +49,7 @@ Even though GANs have been pretty successful in computer vision for generating i
 
 In image generation, gradients are back-propagated from the result of the discriminator through the start of the generator to update both models at the same time. This is possible because images are composed of continuous pixel values. However, in the case of text data, generated words are discrete words and it is impossible to slightly adjust the value of word with a grdient. (Imagine backpropagating gradients through discrete numerical indices {1: 'cat', 2: 'dog'}. What word would index 1.0000008 represent?)
 
-Instead, we must implement a reinforcement strategy, using "rewards" from the discriminator to update the generator's parameters. Recent publications have applied GANs to discrete data with promising results:
+Instead, we must implement a reinforcement strategy, using "rewards" from the discriminator to update the generator's parameters so that we maintain our discrete distribution. Recent publications have applied GANs to discrete data with promising results:
   * [Sequence GAN (Yu et al. 2017)](https://arxiv.org/abs/1609.05473)
   * [Maximum Augmented Likelihood GAN (Che et al. 2017)](https://arxiv.org/abs/1702.07983)
 
@@ -51,6 +59,8 @@ Instead, we must implement a reinforcement strategy, using "rewards" from the di
   * **Part 4** ~ [What's Good for the Goose is Good for the GANder: Some Closing Thoughts][part-4]
 
 
+[GAN-diagram]: ../../../../../GAN-diagram.png
+{: height="460px" width="280px" style="display: block; margin: 0 auto" }
 [part-1]: ../../../2017/06/08/goose-gander-intro
 [part-2]: ../../../2018/06/09/seq-gan
 [part-3]: ../../../2018/06/10/mali-gan

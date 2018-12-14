@@ -4,10 +4,10 @@ title: about
 permalink: /about/
 ---
 
-I'm a **software engineer** with an interest in **computer systems** and **machine learning**. 
+I'm a [**software engineer**](https://www.linkedin.com/in/cjtinah/) with an interest in **computer systems** and **machine learning**. 
   * **student** @ [**Stanford Computer Science**](https://cs.stanford.edu) -- **BS**'17 *Systems* / **MS**'19 *Artificial Intelligence*
   * **SWE** @ [**Doordash**](https://doordash.com), talk to me about **microservice architecture**
-  * always an **advocate** for **women@**, [**here**](https://medium.com/@3fingeredfox/margaret-hamilton-lead-software-engineer-project-apollo-158754170da8) is an inspiring read for you imposter syndrome sufferers
+  * always an **advocate** for **women@**, [**here**](https://medium.com/@3fingeredfox/margaret-hamilton-lead-software-engineer-project-apollo-158754170da8) is an inspiring read for you imposter syndrome subjects
 
 ## some things i'm interested in
   * **NLP research** -- reading up on papers every now and then, *stay tuned for a link to my notes!*
@@ -17,7 +17,7 @@ I'm a **software engineer** with an interest in **computer systems** and **machi
 ## things i like to do for fun
   * travelling places and taking [**photos**](https://www.instagram.com/cjtinah/)
   * sometimes [**tweeting**](https://twitter.com/cjtinah)
-  * [**puppy-watching**](https://pbs.twimg.com/media/CswfUa-VUAAf0Uq.jpg)
+  * [**puppy-watching**](https://www.instagram.com/p/Bk726bJgW10/?utm_source=ig_share_sheet&igshid=1vl1o5qkixu00)
 
 ## reading list 
 *(reviews coming soon)*
